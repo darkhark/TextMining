@@ -7,6 +7,7 @@ answersList = []
 fileLocation = MobyTokens.getMobyTxtLocation()
 stringFile = MobyTokens.getFileAsRawString(fileLocation)
 mobyTokens = MobyTokens.getAllTokens(stringFile)
+
 question1 = MobyTokens.wordAndPunctuationTokenCounter(mobyTokens)
 answersList.append(question1)
 
