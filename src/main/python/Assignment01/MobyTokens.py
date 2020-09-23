@@ -6,7 +6,7 @@ def getMobyTxtLocation():
     return str(Path(__file__).parent.parent.parent.parent.parent / "data") + "/moby.txt"
 
 
-def getAllTokensSorted(fileAsString: str):
+def getAllTokens(fileAsString: str) -> list:
     """
     The tokens will be created using the nltk
     library.
@@ -15,7 +15,7 @@ def getAllTokensSorted(fileAsString: str):
     @return: A sorted list of all tokens
     """
     nltk.download("punkt")
-    return sorted(nltk.word_tokenize(fileAsString))
+    return nltk.word_tokenize(fileAsString)
 
 
 def wordAndPunctuationTokenCounter(tokens) -> list:
@@ -24,9 +24,13 @@ def wordAndPunctuationTokenCounter(tokens) -> list:
 
     @param tokens: The tokens from
     """
-    print("Total number of tokens: " + str(len(tokens)))
+    resultsList = []
+    totalNumber = "Total number of tokens: " + str(len(tokens))
     uniqueTokenList = nltk.FreqDist(tokens)
-    print("Unique number of tokens: " + str(len(uniqueTokenList)))
+    uniqueNumber = "Unique number of tokens: ", str(len(uniqueTokenList))
+    resultsList.append(totalNumber)
+    resultsList.append(uniqueNumber)
+    return resultsList
 
 
 def getFileAsRawString(filePath: str) -> str:
@@ -57,10 +61,44 @@ def getVerbLemmatizations(tokens) -> list:
     return results
 
 
+def getWordPercentage(wordList: list, tokens) -> str:
+    """
+    Calculates the percentage of a list of tokens for the given tokens.
+
+    @param wordList: A list of the words that you want to figure out the percentage of.
+    @param tokens: The total list of tokens.
+    @return:
+    @rtype:
+    """
+    tokenList = nltk.FreqDist(tokens)
+    sumOfFreq = 0.0
+    wordListAsString = ""
+    count = 1
+    for word in wordList:
+        wordListAsString += word
+        if count != len(wordList):
+            wordListAsString += ", "
+            count += 1
+        sumOfFreq += tokenList.freq(word)
+    percentWord = round(sumOfFreq * 100, 5)
+    return "Percentage of (" + wordListAsString + ") is " + "{:5f}".format(percentWord)
+
+
+def getMostFrequentTokens(tokens, numOfTop: int) -> str:
+    tokenList = nltk.FreqDist(tokens)
+    topWordsList = tokenList.most_common(numOfTop)
+    topWordsString = ""
+    for pair in topWordsList:
+        topWordsString += "\n------\nToken: " + pair[0] + "\nFreq: " + str(pair[1])
+    return topWordsString
+
+
 fileLocation = getMobyTxtLocation()
 stringFile = getFileAsRawString(fileLocation)
-mobyTokens = getAllTokensSorted(stringFile)
+mobyTokens = getAllTokens(stringFile)
 wordAndPunctuationTokenCounter(mobyTokens)
 verbLemmatizedTokens = getVerbLemmatizations(mobyTokens)
 wordAndPunctuationTokenCounter(verbLemmatizedTokens)
+print(getWordPercentage(["HISTORY", "history"], mobyTokens))
+print(getMostFrequentTokens(mobyTokens, 10))
 
