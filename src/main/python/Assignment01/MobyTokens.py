@@ -23,19 +23,16 @@ def getAllTokens(fileAsString: str) -> list:
     return nltk.word_tokenize(fileAsString)
 
 
-def wordAndPunctuationTokenCounter(tokens) -> list:
+def wordAndPunctuationTokenCounter(tokens) -> str:
     """
     Counts tokens in a document.
 
     @param tokens: The tokens from
     """
-    resultsList = []
     totalNumber = "Total number of tokens: " + str(len(tokens))
     uniqueTokenList = nltk.FreqDist(tokens)
-    uniqueNumber = "Unique number of tokens: ", str(len(uniqueTokenList))
-    resultsList.append(totalNumber)
-    resultsList.append(uniqueNumber)
-    return resultsList
+    uniqueNumber = "Unique number of tokens: " + str(len(uniqueTokenList))
+    return totalNumber + "\n" + uniqueNumber
 
 
 def getFileAsRawString(filePath: str) -> str:
@@ -102,14 +99,3 @@ def getMostFrequentTokens(tokens, numOfTop: int) -> str:
     for pair in topWordsList:
         topWordsString += "\n------\nToken: " + pair[0] + "\nFreq: " + str(pair[1])
     return topWordsString
-
-
-fileLocation = getMobyTxtLocation()
-stringFile = getFileAsRawString(fileLocation)
-mobyTokens = getAllTokens(stringFile)
-wordAndPunctuationTokenCounter(mobyTokens)
-verbLemmatizedTokens = getVerbLemmatizations(mobyTokens)
-wordAndPunctuationTokenCounter(verbLemmatizedTokens)
-print(getWordPercentage(["HISTORY", "history"], mobyTokens))
-print(getMostFrequentTokens(mobyTokens, 10))
-

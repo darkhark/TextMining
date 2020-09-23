@@ -1,0 +1,55 @@
+Name: Josh Harkness
+Class: CAP6307-TextMining
+Date: 2020-09-22
+
+Question 1:
+------------------------------
+Total number of tokens: 255038
+Unique number of tokens: 20742
+------------------------------
+
+Question 2:
+------------------------------
+Total number of tokens: 255038
+Unique number of tokens: 19059
+------------------------------
+
+Question 3:
+------------------------------
+Percentage of (HISTORY, history) is 0.007450
+------------------------------
+
+Question 4:
+------------------------------
+
+------
+Token: ,
+Freq: 19204
+------
+Token: the
+Freq: 13715
+------
+Token: .
+Freq: 7306
+------
+Token: of
+Freq: 6513
+------
+Token: and
+Freq: 6010
+------
+Token: a
+Freq: 4545
+------
+Token: to
+Freq: 4515
+------
+Token: ;
+Freq: 4173
+------
+Token: in
+Freq: 3908
+------
+Token: that
+Freq: 2978
+------------------------------
