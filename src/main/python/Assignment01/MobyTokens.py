@@ -3,6 +3,11 @@ import nltk as nltk
 
 
 def getMobyTxtLocation():
+    """
+    Gets the path for the mobyText file specific to ths repo.
+
+    @return: the string representation of the path
+    """
     return str(Path(__file__).parent.parent.parent.parent.parent / "data") + "/moby.txt"
 
 
@@ -67,8 +72,7 @@ def getWordPercentage(wordList: list, tokens) -> str:
 
     @param wordList: A list of the words that you want to figure out the percentage of.
     @param tokens: The total list of tokens.
-    @return:
-    @rtype:
+    @return: A string of the percentage the entire wordList takes up in the tokens.
     """
     tokenList = nltk.FreqDist(tokens)
     sumOfFreq = 0.0
@@ -85,6 +89,13 @@ def getWordPercentage(wordList: list, tokens) -> str:
 
 
 def getMostFrequentTokens(tokens, numOfTop: int) -> str:
+    """
+    Determines the top n terms and converts the values into a string.
+
+    @param tokens: The tokens to determine the frequency for.
+    @param numOfTop: How many top tokens should be considered.
+    @return: A string consisting of the top n tokens and their frequencies.
+    """
     tokenList = nltk.FreqDist(tokens)
     topWordsList = tokenList.most_common(numOfTop)
     topWordsString = ""
