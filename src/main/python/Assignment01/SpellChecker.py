@@ -79,9 +79,10 @@ class SpellCheckerWindow(tk.Frame):
         @param word: An alphaetic string
         """
         nltk.download("words")
+        word = word.strip()
         if len(self.textBox.get("1.0", "end-1c")) > 0:
             self.textBox.delete("1.0", "end-1c")
-        if word.strip().isalpha():
+        if word.isalpha():
             top15 = self.getTop15Results(word)
         else:
             top15 = ["Please enter an alphabetic string."]
@@ -101,5 +102,7 @@ class SpellCheckerWindow(tk.Frame):
             if count < 15:
                 top15.append(key)
                 count += 1
+            else:
+                break
         self.textBox.delete("1.0", "end-1c")
         return top15
