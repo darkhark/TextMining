@@ -11,4 +11,4 @@ The GUI makes use of some threading, but please do not hammer down on "Check" bu
 
 For the spell checker, only up to 15 words will be added to the Tkinter Text.
 
-Check the Assignment01Deliverable for more details.
+Check docs/Assignment01Deliverable for more details.
