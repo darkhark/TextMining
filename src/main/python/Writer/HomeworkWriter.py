@@ -17,7 +17,7 @@ class HomeworkWriter:
         @param fileName: A string for the name of the txt file to be generated.
         @return: None, but it writes to a file in the docs directory.
         """
-        with open(HomeworkWriter._docsPath + fileName + ".txt", "x") as homework:
+        with open(HomeworkWriter._docsPath + fileName + ".txt", "w") as homework:
             count = 1
             separator = HomeworkWriter._separator
             homework.write("Name: Josh Harkness\nClass: CAP6307-TextMining\n")

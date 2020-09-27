@@ -1,7 +1,9 @@
 # This script writes out the homework one file
 
 from Assignment01 import MobyTokens
+from Assignment01.SpellChecker import SpellCheckerWindow
 from Writer.HomeworkWriter import HomeworkWriter
+import tkinter as tk
 
 answersList = []
 fileLocation = MobyTokens.getMobyTxtLocation()
@@ -21,3 +23,7 @@ answersList.append(question3)
 question4 = MobyTokens.getMostFrequentTokens(mobyTokens, 10)
 answersList.append(question4)
 HomeworkWriter.writeHomework(answersList, "Assignment01")
+
+root = tk.Tk()
+my_gui = SpellCheckerWindow(root)
+root.mainloop()

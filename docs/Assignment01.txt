@@ -1,6 +1,6 @@
 Name: Josh Harkness
 Class: CAP6307-TextMining
-Date: 2020-09-22
+Date: 2020-09-27
 
 Question 1:
 ------------------------------
