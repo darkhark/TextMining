@@ -9,6 +9,8 @@ The script writes to a file in the docs directory named Assignment01 for the fir
 half of the assignment. It then opens a GUI for the spellchecker portion of the assignment.
 The GUI makes use of some threading, but please do not hammer down on "Check" button too many times.
 
+All required libraries are in requirements.txt
+
 For the spell checker, only up to 15 words will be added to the Tkinter Text.
 
 Check docs/Assignment01Deliverable for more details.
